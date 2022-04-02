@@ -1,34 +1,29 @@
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class StringTest {
     @Test
-    void Length() {
-        int actualLength = "ABCD".length();
+    void testLengthOfString() {
+        SampleString sampleString = new SampleString();
+        int actualLength = sampleString.testLength("ABCD");
         int expectedLength = 4;
         assertEquals(expectedLength, actualLength);
     }
 
     @Test
-    void toUpperCase_basic() {
-        String str = "abcd";
-        String result = str.toUpperCase();
-        assertEquals("ABCD", result);
+    void testCompareStrings() {
+        SampleString sampleString = new SampleString();
+        String a = "ABCDEFG";
+        String b = "ABC";
+        assertEquals(4, sampleString.compare(a, b));
     }
 
     @Test
-    void length_exception() {
-        String str = null;
-        assertThrows(NullPointerException.class,
-                () -> {
-                    str.length();
-                }
-                );
+    void testToUpperCase() {
+        SampleString sampleString = new SampleString();
+        String str = "abcd";
+        String result = sampleString.toUpperCase(str);
+        assertEquals("ABCD", result);
     }
 }
